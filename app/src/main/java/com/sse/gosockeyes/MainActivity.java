@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
         mMainView = (RecyclerView) findViewById(R.id.main_view);
 
@@ -42,14 +43,17 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.survey_icon,
                 R.drawable.you_tube,
                 R.drawable.twitter_icon,
+                R.drawable.sockeyes_logo_small,
+                R.drawable.espn
         };
 
         String[] content_Text = {
-                "Did you see what just happened?!? Crosby is signing up with the Sockeyes, we are going for the cup. #winners",
-                "Help the Sockeys pick the best team! Answer our draft survey",
-                "Upload a view to the Sockeyes channel for a chance to win season tickets. <a href='https://www.youtube.com'>Tap Here!</a> ",
-                "Should Seattle restaurants stop serving Salmon out of respect to our new team?"
-
+                "file:///android_res/raw/crosby.html",
+                "file:///android_res/raw/survey.html",
+                "file:///android_res/raw/youtube.html",
+                "file:///android_res/raw/salmon.html",
+                "file:///android_res/raw/tickets.html",
+                "file:///android_res/raw/espn.html"
         };
 
         //adding test items to the list

@@ -20,12 +20,13 @@ public class SurveyActivity extends AppCompatActivity {
     private RecyclerView mMainView;
     private RecyclerView.LayoutManager mLayoutManager;
     private List<RecyclerViewClass> mItems;
-    private CustomAdapter mAdapter;
+    private CustomSurveyAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_survey);
+        getSupportActionBar().hide();
 
         mMainView = (RecyclerView) findViewById(R.id.survey_view);
 
@@ -61,9 +62,8 @@ public class SurveyActivity extends AppCompatActivity {
             Drawable d = new BitmapDrawable(getResources(), bitmap);
             mItems.add(i, new RecyclerViewClass(player_names[i], i+" string2", d));
         }
-        mAdapter = new CustomAdapter(this, mItems);
+        mAdapter = new CustomSurveyAdapter(this, mItems);
         mMainView.setAdapter(mAdapter);
     }
-
 
 }

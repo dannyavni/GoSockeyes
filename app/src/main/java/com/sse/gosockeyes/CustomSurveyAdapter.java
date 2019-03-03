@@ -90,7 +90,7 @@ public class CustomSurveyAdapter extends RecyclerView.Adapter<CustomSurveyAdapte
             mPlayerImageView = (ImageView)itemView.findViewById(R.id.player_image);
             mPlayerNameTextView = (TextView) itemView.findViewById(R.id.player_name);
 
-            cardView = (CardView)itemView.findViewById(R.id.card_layout);
+            cardView = (CardView)itemView.findViewById(R.id.survey_card_layout);
 
         }
     }

@@ -20,13 +20,13 @@ public class RecyclerViewClass {
      * @param mMsg1 Main string to be displayed in each row
      * @param mMsg2 Supporting string to be displayed in each row
      * @param mImage_url Image to be displayed in each row
-     * @param mIsChecked Status of the checkbox in each row
+     * @param bIsEven Status of the checkbox in each row
      */
-    public RecyclerViewClass(String mMsg1, String mMsg2, Drawable mImage_url, boolean mIsChecked){
+    public RecyclerViewClass(String mMsg1, String mMsg2, Drawable mImage_url, boolean bIsEven){
         this.mMsg1 = mMsg1;
         this.mMsg2 = mMsg2;
         this.mImage_url = mImage_url;
-        this.mIsChecked = mIsChecked;
+        this.mIsChecked = bIsEven;
     }
 
     //setters
