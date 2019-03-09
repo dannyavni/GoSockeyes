@@ -66,7 +66,7 @@ public class CustomSurveyAdapter extends RecyclerView.Adapter<CustomSurveyAdapte
     public void onBindViewHolder(final CustomRecyclerViewHolder holder, int position) {
         holder.mPlayerImageView.setImageDrawable(mItems.get(position).getmImage_url());
         holder.mPlayerNameTextView.setText(mItems.get(position).getMessage1());
-        //holder.mMsg2.setText(mItems.get(position).getMessage2());
+        holder.mPlayerInfoTextView.setText(mItems.get(position).getMessage2());
     }
 
     @Override
@@ -78,6 +78,7 @@ public class CustomSurveyAdapter extends RecyclerView.Adapter<CustomSurveyAdapte
 
         private ImageView mPlayerImageView;
         private TextView  mPlayerNameTextView;
+        private TextView  mPlayerInfoTextView;
         private CardView  cardView;
 
 
@@ -89,6 +90,7 @@ public class CustomSurveyAdapter extends RecyclerView.Adapter<CustomSurveyAdapte
             super(itemView);
             mPlayerImageView = (ImageView)itemView.findViewById(R.id.player_image);
             mPlayerNameTextView = (TextView) itemView.findViewById(R.id.player_name);
+            mPlayerInfoTextView = (TextView) itemView.findViewById(R.id.player_info);
 
             cardView = (CardView)itemView.findViewById(R.id.survey_card_layout);
 

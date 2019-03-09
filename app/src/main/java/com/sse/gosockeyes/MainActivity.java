@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -22,11 +25,15 @@ public class MainActivity extends AppCompatActivity {
     private List<RecyclerViewClass> mItems;
     private CustomAdapter mAdapter;
 
+    private Toolbar mTopToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
+        mTopToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(mTopToolbar);
 
         mMainView = (RecyclerView) findViewById(R.id.main_view);
 
@@ -38,34 +45,45 @@ public class MainActivity extends AppCompatActivity {
         //mMainView.addItemDecoration(new RecyclerViewDecorator(this));
         //creating a rounded drawable for avatar
 
-        int[] content_Icons = {
-                R.drawable.twitter_icon,
-                R.drawable.survey_icon,
-                R.drawable.you_tube,
-                R.drawable.twitter_icon,
-                R.drawable.sockeyes_logo_small,
-                R.drawable.espn
-        };
+        class ContentItem {
+            public int icon;
+            public String url;
+            public ContentItem(int icon, String url) {
+                this.icon = icon;
+                this.url = url;
+            }
+        }
 
-        String[] content_Text = {
-                "file:///android_res/raw/crosby.html",
-                "file:///android_res/raw/survey.html",
-                "file:///android_res/raw/youtube.html",
-                "file:///android_res/raw/salmon.html",
-                "file:///android_res/raw/tickets.html",
-                "file:///android_res/raw/espn.html"
+        ContentItem[] content_items = {
+                new ContentItem(R.drawable.twitter_icon, "file:///android_res/raw/crosby.html") ,
+                new ContentItem(R.drawable.survey_icon, "file:///android_res/raw/survey.html"),
+                new ContentItem(R.drawable.you_tube,"file:///android_res/raw/youtube.html"),
+                new ContentItem(R.drawable.twitter_icon,"file:///android_res/raw/salmon.html"),
+                new ContentItem(R.drawable.sockeyes_logo_small, "file:///android_res/raw/tickets.html"),
+                new ContentItem(R.drawable.espn,"file:///android_res/raw/espn.html"),
+                new ContentItem(R.drawable.tinder,"file:///android_res/raw/tinder.html")
         };
 
         //adding test items to the list
         mItems = new ArrayList<>();
-        for(int i=0; i<content_Text.length; i++){
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), content_Icons[i]);
+        for(int i=0; i<content_items.length; i++){
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), content_items[i].icon);
             Drawable d = new BitmapDrawable(getResources(), bitmap);
-            mItems.add(i, new RecyclerViewClass(content_Text[i], "", d));
+            mItems.add(i, new RecyclerViewClass(content_items[i].url, "", d));
         }
         mAdapter = new CustomAdapter(this, mItems);
         mMainView.setAdapter(mAdapter);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
 }

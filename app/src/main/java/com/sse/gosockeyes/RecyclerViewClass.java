@@ -72,6 +72,10 @@ public class RecyclerViewClass {
         return mMsg1;
     }
 
+    public String getMessage2(){
+        return mMsg2;
+    }
+
     /**
      * @return String containing Supporting message of the row
      */
